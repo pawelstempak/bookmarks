@@ -15,7 +15,7 @@
     <link href="css/bootstrap-msp.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>Mailing Service Panel</title>
+    <title>Bookmarks v0.0.1</title>
   </head>
   <body>
 

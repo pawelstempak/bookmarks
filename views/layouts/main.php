@@ -53,9 +53,11 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Favorites</a>
             </li>
+            <?php foreach($params['groups'] as $key): ?>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="viewgroup/<?= $key['id']?>"><?= $key['name']?></a>
             </li>
+            <?php endforeach; ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Dropdown

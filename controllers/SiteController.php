@@ -20,10 +20,13 @@ class SiteController extends Controller
         $this->senders = new SendersModel();
         $this->groups = new GroupsModel();
         $this->mailing = new MailingModel();
+        $groupsList = $this->groups->LoadGroupsList();
+
     }
 
     public function home()
     {   
+        $groupsList = $this->groups->LoadGroupsList();
         $params = [
             'name' => 'Ocotpus Site'
         ];

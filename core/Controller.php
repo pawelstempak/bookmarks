@@ -11,8 +11,13 @@ class Controller
         $this->layout = $layout;
     }
 
-    public function render($view, $params = [])
+    public function redirect($route)
     {
-        return Application::$core->router->renderView($view, $params);
+        header('Location: '.$route);
+    }
+
+    public function render($view, $menu = [], $params = [])
+    {
+        return Application::$core->router->renderView($view, $menu, $params);
     }
 }

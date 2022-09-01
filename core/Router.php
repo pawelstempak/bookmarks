@@ -51,7 +51,7 @@ class Router
         return call_user_func($callback, $this->request);
     }
 
-    protected function layoutContent()
+    protected function layoutContent($menu_params = [])
     {
         $layout = Application::$core->layout;
         if(Application::$core->controller) {
@@ -72,9 +72,9 @@ class Router
         return ob_get_clean();
     }
 
-    public function renderView($view, $params = [])
+    public function renderView($view, $menu = [], $params = [])
     {
-        $layoutContent = $this->layoutContent();
+        $layoutContent = $this->layoutContent($menu);
         $viewContent = $this->renderOnlyView($view, $params);
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }

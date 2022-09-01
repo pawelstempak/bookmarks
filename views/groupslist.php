@@ -1,7 +1,7 @@
 <?php /* views/grouplist.php */ ?>
 <div class="flex-shrink-0 p-3 bg-white">
 <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
-<span class="fs-5 fw-semibold">Groups <i class="bi bi-arrow-right-short"></i> <a class="link-secondary" href="/groupslist">List</a></span>
+<span class="fs-6 fw-semibold">Groups</span>
 </div>
 <table class="table table-striped table-hover">
   <thead>

@@ -13,6 +13,6 @@
   <div class="mb-3">
     <label for="inputImportfield" class="form-label">Description</label>
     <textarea name="description" class="form-control" id="inputImportfield"rows="10"></textarea><br />
-  <div class="d-flex justify-content-between"><button type="submit" class="btn btn-secondary">Submit</button> <a href="grpupslist" type="button" class="btn btn-light float-right">Cancel</a></div>
+  <div class="d-flex justify-content-between"><button type="submit" class="btn btn-secondary">Submit</button> <a href="groupslist" type="button" class="btn btn-light float-right">Cancel</a></div>
 </form>
 </div>

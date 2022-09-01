@@ -30,13 +30,15 @@ class Migration
                                     `id` int(11) NOT NULL,
                                     `name` varchar(100) NOT NULL,
                                     `url` varchar(200) NOT NULL,
-                                    `description` varchar(100) DEFAULT NULL
+                                    `description` varchar(500) DEFAULT NULL,
+                                    `star` int(1) DEFAULT NULL
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                   ALTER TABLE `bookmarks`
                                 ADD PRIMARY KEY (`id`);      
                                 CREATE TABLE `groups` (
                                     `id` int(11) NOT NULL,
-                                    `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+                                    `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                                    `description` varchar(500) DEFAULT NULL
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                   ALTER TABLE `groups`
                                   ADD PRIMARY KEY (`id`);       

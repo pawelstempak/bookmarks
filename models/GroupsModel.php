@@ -12,6 +12,7 @@ class GroupsModel
         $db_request = Application::$core->con->pdo->prepare('
                                     SELECT id, name
                                     FROM groups
+                                    ORDER BY name
         ');
         $db_request->execute();
         

@@ -15,22 +15,23 @@ class SiteController extends Controller
     public $groups;
     public $mailing;
 
+    public array $menu;
+
     public function __construct()
     {
         $this->senders = new SendersModel();
         $this->groups = new GroupsModel();
         $this->mailing = new MailingModel();
-        $groupsList = $this->groups->LoadGroupsList();
-
+        $this->menu = [
+            'site_name' => 'Bookmarks',
+            'ver' => 'v0.0.1',
+            'groups' => $this->groups->LoadGroupsList()
+        ];
     }
 
     public function home()
     {   
-        $groupsList = $this->groups->LoadGroupsList();
-        $params = [
-            'name' => 'Ocotpus Site'
-        ];
-        return $this->render('home', $params);
+        return $this->render('home', $this->menu);
     }
 
     // public function contact()
@@ -76,7 +77,7 @@ class SiteController extends Controller
             'groupslist' => $groupsList,
             
         ];        
-        return $this->render('groupslist', $params);
+        return $this->render('groupslist', $this->menu, $params);
     }
 
     public function newgroup(Request $request)
@@ -84,8 +85,9 @@ class SiteController extends Controller
         if($request->isPost())
         {
             $this->groups->SaveNewGroup($request->getBody());
+            return $this->redirect('/groupslist');
         }
-        return $this->render('newgroup');
+        return $this->render('newgroup', $this->menu);
     }    
 
     // public function senderslist()

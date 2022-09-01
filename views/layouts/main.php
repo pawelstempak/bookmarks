@@ -15,25 +15,25 @@
     <link href="css/bootstrap-msp.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>Bookmarks v0.0.1</title>
+    <title><?= $menu_params['site_name']." ".$menu_params['ver'] ?></title>
   </head>
   <body>
 
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Bookmarks v0.0.1</a>
+      <a class="navbar-brand" href="/"><?= $menu_params['site_name'] ?></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Bookmarks</h5>
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><?= $menu_params['site_name'].' <span class="fs-6">'.$menu_params['ver'] ?></span></h5>
           <span class="dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Edit
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="newbookmark">Add bookmarks</a></li>
+                <li><a class="dropdown-item" href="newbookmark">Add bookmark</a></li>
                 <li><a class="dropdown-item" href="bookmarkslist">Bookmarks</a></li>              
                 <li>
                   <hr class="dropdown-divider">
@@ -53,24 +53,14 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/">Favorites</a>
             </li>
-            <?php foreach($params['groups'] as $key): ?>
+            <li>
+              <hr>
+            </li>            
+            <?php foreach($menu_params['groups'] as $key): ?>
             <li class="nav-item">
               <a class="nav-link" href="viewgroup/<?= $key['id']?>"><?= $key['name']?></a>
             </li>
             <?php endforeach; ?>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Dropdown
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
           </ul>
           <!-- <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

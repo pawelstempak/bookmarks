@@ -26,11 +26,6 @@ if($app->isAuth())
     $app->router->get('/groupslist', [SiteController::class, 'groupslist']);
     $app->router->get('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
-    $app->router->get('/senderslist', [SiteController::class, 'senderslist']);
-    $app->router->get('/editsender', [SiteController::class, 'editsender']);
-    $app->router->post('/editsender', [SiteController::class, 'editsender']);
-    $app->router->get('/newsender', [SiteController::class, 'newsender']);
-    $app->router->post('/newsender', [SiteController::class, 'newsender']);    
 }
 else
 {

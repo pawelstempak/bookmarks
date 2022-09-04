@@ -23,13 +23,27 @@ class SiteController extends Controller
         $this->menu = [
             'site_name' => 'Bookmarks',
             'ver' => 'v0.0.1',
-            'groups' => $this->groups->loadList()
+            'groups' => $this->groups->loadList([
+                'groups'
+            ])
         ];
     }
 
     public function home()
     {   
-        return $this->render('home', $this->menu);
+        $favorites = $this->bookmarks->loadList(
+            [
+            'bookmarks'
+            ],
+            [
+            'star' => 1
+            ]
+        );
+        $params = [
+            'favorites_bookmarks' => $favorites,
+            
+        ];          
+        return $this->render('home', $this->menu, $params);
     }
 
     public function logout()
@@ -61,10 +75,9 @@ class SiteController extends Controller
 
     public function bookmarksList()
     {   
-        $bookmarks_list = $this->bookmarks->loadList();
+        $bookmarks_list = $this->bookmarks->loadList(['bookmarks']);
         $params = [
-            'bookmarkslist' => $bookmarks_list,
-            
+            'bookmarkslist' => $bookmarks_list
         ];        
         return $this->render('bookmarkslist', $this->menu, $params);
     }    
@@ -76,6 +89,31 @@ class SiteController extends Controller
             $this->bookmarks->saveNewOne($request->getBody());
             return $this->redirect('/bookmarkslist');
         }
-        return $this->render('newbookmark', $this->menu);
+        $groups_list = $this->groups->loadList();
+        $params = [
+            'groupslist' => $groups_list,
+            
+        ];          
+        return $this->render('newbookmark', $this->menu, $params);
     }        
+
+    public function viewGroup(Request $request)
+    {   
+        $category = $request->getBody();
+        $bookmarks = $this->bookmarks->loadList(
+            [
+                'relations', 'bookmarks'
+            ],            
+            [
+                'relations.id_group' => $category['block1'],
+                'relations.id_bookmarks' => 'bookmarks.id'
+            ]
+        );
+        
+        $params = [
+            'bookmarks' => $bookmarks,
+            
+        ];          
+        return $this->render('viewgroup', $this->menu, $params);
+    }    
 }

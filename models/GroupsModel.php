@@ -8,7 +8,7 @@ use app\interfaces\Edit;
 
 class GroupsModel implements Edit
 {
-    public function loadList():array
+    public function loadList(array $tables=[], array $param=[]):array
     {
         $db_request = Application::$core->con->pdo->prepare('
                                     SELECT id, name

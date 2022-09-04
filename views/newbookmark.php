@@ -10,8 +10,17 @@
     <input type="text" name="name" class="form-control" id="inputName" aria-describedby="nameHelp">
     <div id="nameHelp" class="form-text"></div>
   </div>
+  <div class="mb-3">
+    <label for="form-select" class="form-label">Category</label>
+    <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
+    <option selected>Select category</option>
+    <?php foreach($params['groupslist'] as $key): ?>
+    <option value="<?php echo $key['id'] ?>"><?php echo $key['name'] ?></option>
+    <?php endforeach; ?>    
+    </select>      
+  </div>
   <div class="form-check form-switch pb-2">
-    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="1">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="1" name="star">
     <label class="form-label" for="flexSwitchCheckDefault">Favorites</label>
   </div>
   <div class="mb-3">

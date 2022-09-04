@@ -2,7 +2,7 @@
 namespace app\interfaces;
 interface Edit
 {
-    public function LoadList():array;
+    public function loadList(array $tables=[], array $param=[]):array;
 
-    public function SaveNewOne(string $getBody);
+    public function saveNewOne(string $getBody);
 }

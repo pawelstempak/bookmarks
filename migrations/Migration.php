@@ -18,7 +18,7 @@ class Migration
     {
         $dbRequest = $this->con->pdo->prepare('
                                 CREATE TABLE `users` (
-                                    `id` int(11) NOT NULL,
+                                    `id` int(11) NOT NULL AUTO_INCREMENT,
                                     `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                                     `lastname` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                                     `email` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -27,7 +27,7 @@ class Migration
                                 ALTER TABLE `users`
                                 ADD PRIMARY KEY (`id`);
                                 CREATE TABLE `bookmarks` (
-                                    `id` int(11) NOT NULL,
+                                    `id` int(11) NOT NULL AUTO_INCREMENT,
                                     `name` varchar(100) NOT NULL,
                                     `url` varchar(200) NOT NULL,
                                     `description` varchar(500) DEFAULT NULL,
@@ -36,14 +36,14 @@ class Migration
                                   ALTER TABLE `bookmarks`
                                 ADD PRIMARY KEY (`id`);      
                                 CREATE TABLE `groups` (
-                                    `id` int(11) NOT NULL,
+                                    `id` int(11) NOT NULL AUTO_INCREMENT,
                                     `name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
                                     `description` varchar(500) DEFAULT NULL
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                   ALTER TABLE `groups`
                                   ADD PRIMARY KEY (`id`);       
                                   CREATE TABLE `relations` (
-                                    `id` int(11) NOT NULL,
+                                    `id` int(11) NOT NULL AUTO_INCREMENT,
                                     `id_bookmarks` int(11) NOT NULL,
                                     `id_group` int(11) NOT NULL
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

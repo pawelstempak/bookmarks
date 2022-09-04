@@ -26,6 +26,7 @@ if($app->isAuth())
     $app->router->get('/groupslist', [SiteController::class, 'groupslist']);
     $app->router->get('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
+    $app->router->get('/viewgroup', [SiteController::class, 'viewgroup']);
 }
 else
 {

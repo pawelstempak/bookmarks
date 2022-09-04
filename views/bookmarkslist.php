@@ -1,7 +1,8 @@
 <?php /* views/bookmarkslist.php */ ?>
 <div class="flex-shrink-0 p-3 bg-white">
 <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
-<span class="fs-6 fw-semibold">Bookmarks List</span>
+  <div class="flex-fill"><span class="fs-6 fw-semibold">Bookmarks List</span></div>
+  <div class="flex-fill text-end"><a href="newbookmark" class="btn btn-primary btn-sml">Add bookmark</a></div>
 </div>
 <table class="table table-striped table-hover">
   <thead>

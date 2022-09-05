@@ -36,6 +36,20 @@ class GroupsModel implements Edit
         return $groupslist;
     }
 
+    public function loadOne(array $tables, int $id):array
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    SELECT *
+                                    FROM '.$tables.'
+                                    WHERE id = '.$id.'
+        ');
+        $db_request->execute();
+        
+        $group_one = $db_request->fetch();
+
+        return $group_one;        
+    }
+
     public function saveNewOne($getBody)
     {
         $db_request = Application::$core->con->pdo->prepare('

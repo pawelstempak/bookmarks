@@ -27,6 +27,7 @@ if($app->isAuth())
     $app->router->get('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->get('/viewgroup', [SiteController::class, 'viewgroup']);
+    $app->router->get('/editgroup', [SiteController::class, 'editgroup']);
 }
 else
 {

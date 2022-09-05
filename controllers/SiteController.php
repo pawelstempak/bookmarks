@@ -129,5 +129,10 @@ class SiteController extends Controller
             'category_name' => $category_name
         ];          
         return $this->render('viewgroup', $this->menu, $params);
-    }    
+    }
+
+    public function editGroup(Request $request)
+    {
+        $category = $request->getBody();   
+    }
 }

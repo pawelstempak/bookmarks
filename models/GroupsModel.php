@@ -8,6 +8,20 @@ use app\interfaces\Edit;
 
 class GroupsModel implements Edit
 {
+    public function loadName($id)
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+        SELECT name
+        FROM groups
+        WHERE id = '.$id.'
+        ');
+        $db_request->execute();
+
+        $res = $db_request->fetch();
+
+        return $res['name'];
+    }
+
     public function loadList(array $tables=[], array $param=[]):array
     {
         $db_request = Application::$core->con->pdo->prepare('

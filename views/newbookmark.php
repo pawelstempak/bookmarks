@@ -13,7 +13,6 @@
   <div class="mb-3">
     <label for="form-select" class="form-label">Category</label>
     <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="category">
-    <option selected>Select category</option>
     <?php foreach($params['groupslist'] as $key): ?>
     <option value="<?php echo $key['id'] ?>"><?php echo $key['name'] ?></option>
     <?php endforeach; ?>    

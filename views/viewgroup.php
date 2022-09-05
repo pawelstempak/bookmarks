@@ -1,7 +1,7 @@
 <?php /* views/viewgroup.php */ ?>
 <div class="flex-shrink-0 p-3 bg-white">
 <!-- <img src="images/logo.png" class="bi me-2" width="30" height="30" /> -->
-<span class="fs-5 fw-semibold"><i class="bi bi-bookmark-star-fill"></i> Favorites</span><br /><br />
+<span class="fs-5 fw-semibold"><i class="bi bi-bookmarks-fill"></i> <?= $params['category_name'] ?></span><br /><br />
 <div class="list-group w-auto">
 <?php
     foreach($params['bookmarks'] as $key):

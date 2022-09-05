@@ -33,13 +33,13 @@
                 Edit
               </a>
               <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item" href="newbookmark">Add bookmark</a></li>
-                <li><a class="dropdown-item" href="bookmarkslist">Bookmarks</a></li>              
+                <li><a class="dropdown-item" href="/newbookmark">Add bookmark</a></li>
+                <li><a class="dropdown-item" href="/bookmarkslist">Bookmarks</a></li>              
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="newgroup">Add group</a></li>
-                <li><a class="dropdown-item" href="groupslist">Groups</a></li>
+                <li><a class="dropdown-item" href="/newgroup">Add group</a></li>
+                <li><a class="dropdown-item" href="/groupslist">Groups</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
@@ -58,7 +58,7 @@
             </li>            
             <?php foreach($menu_params['groups'] as $key): ?>
             <li class="nav-item">
-              <a class="nav-link" href="viewgroup/<?= $key['id']?>"><?= $key['name']?></a>
+              <a class="nav-link" href="/viewgroup/<?= $key['id']?>"><?= $key['name']?></a>
             </li>
             <?php endforeach; ?>
           </ul>

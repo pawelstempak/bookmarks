@@ -100,6 +100,7 @@ class SiteController extends Controller
     public function viewGroup(Request $request)
     {   
         $category = $request->getBody();
+        $category_name = $this->groups->loadName($category['block1']);
         $bookmarks = $this->bookmarks->loadList(
             [
                 'relations', 'bookmarks'
@@ -112,7 +113,7 @@ class SiteController extends Controller
         
         $params = [
             'bookmarks' => $bookmarks,
-            
+            'category_name' => $category_name
         ];          
         return $this->render('viewgroup', $this->menu, $params);
     }    

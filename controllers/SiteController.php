@@ -22,7 +22,7 @@ class SiteController extends Controller
         $this->bookmarks = new BookmarksModel();
         $this->menu = [
             'site_name' => 'Bookmarks',
-            'ver' => 'v0.0.1',
+            'ver' => 'v0.0.2',
             'groups' => $this->groups->loadList([
                 'groups'
             ])
@@ -53,8 +53,15 @@ class SiteController extends Controller
         header('Location: /');       
     }
 
-    public function groupsList()
+    public function groupsList(Request $request)
     {   
+        $cat = $request->getBody();
+        $id = $cat['block1'] ?? $id = "";
+        if($id!="")
+        {
+            $this->groups->deleteOne('groups', $id);
+            return $this->redirect('/groupslist');
+        }
         $groups_list = $this->groups->loadList();
         $params = [
             'groupslist' => $groups_list,
@@ -73,8 +80,15 @@ class SiteController extends Controller
         return $this->render('newgroup', $this->menu);
     }    
 
-    public function bookmarksList()
+    public function bookmarksList(Request $request)
     {   
+        $cat = $request->getBody();
+        $id = $cat['block1'] ?? $id = "";
+        if($id!="")
+        {
+            $this->groups->deleteOne('bookmarks', $id);
+            return $this->redirect('/bookmarkslist');
+        }        
         $bookmarks_list = $this->bookmarks->loadList(['bookmarks']);
         $params = [
             'bookmarkslist' => $bookmarks_list
@@ -91,8 +105,7 @@ class SiteController extends Controller
         }
         $groups_list = $this->groups->loadList();
         $params = [
-            'groupslist' => $groups_list,
-            
+            'groupslist' => $groups_list
         ];          
         return $this->render('newbookmark', $this->menu, $params);
     }        

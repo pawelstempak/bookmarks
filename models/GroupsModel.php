@@ -53,4 +53,13 @@ class GroupsModel implements Edit
         ');
         $db_request->execute();
     }   
+
+    public function deleteOne($table, $id)
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    DELETE FROM '.$table.'
+                                    WHERE id = '.$id.'
+        ');
+        $db_request->execute();        
+    }
 }

@@ -22,7 +22,7 @@ class SiteController extends Controller
         $this->bookmarks = new BookmarksModel();
         $this->menu = [
             'site_name' => 'Bookmarks',
-            'ver' => 'v0.0.2',
+            'ver' => 'v0.0.3',
             'groups' => $this->groups->loadList([
                 'groups'
             ])
@@ -133,6 +133,36 @@ class SiteController extends Controller
 
     public function editGroup(Request $request)
     {
-        $category = $request->getBody();   
-    }
+        $groups_data = $request->getBody();
+        if($request->isPost())
+        {
+            $this->groups->saveGroup($groups_data, $groups_data['id']);
+            return $this->redirect('/groupslist');
+        }
+        $params = $this->groups->loadOne(['groups'], ['id'=>$groups_data['block1']]);
+        return $this->render('editgroup', $this->menu, $params);
+    }     
+
+    public function editBookmark(Request $request)
+    {
+        $bookmarks_data = $request->getBody();
+        if($request->isPost())
+        {
+            $this->bookmarks->saveBookmark($bookmarks_data, $bookmarks_data['id']);
+            return $this->redirect('/bookmarkslist');
+        }
+        $bookmark_one = $this->bookmarks->loadOne([
+            'bookmarks','relations'
+        ], 
+        [
+            'relations.id_bookmarks' => $bookmarks_data['block1'],
+            'bookmarks.id' => 'relations.id_bookmarks'
+        ]);
+        $groups_list = $this->groups->loadList();
+        $params = [
+            'groupslist' => $groups_list,
+            'bookmark_one' => $bookmark_one
+        ];          
+        return $this->render('editbookmark', $this->menu, $params);
+    }      
 }

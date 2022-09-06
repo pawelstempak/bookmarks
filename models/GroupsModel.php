@@ -8,6 +8,30 @@ use app\interfaces\Edit;
 
 class GroupsModel implements Edit
 {
+    private string $condition = "";
+    private string $tables = "";
+
+    public function createCondition(array $p)
+    {
+        if(count($p)>0) $this->condition="WHERE ";
+        foreach($p as $key => $value)
+        {               
+            $this->condition .= "".$key." = ".$value." and ";
+        }
+        if(count($p)>0) $this->condition = substr($this->condition, 0, -4);
+        return $this->condition;
+    }
+
+    private function createTables(array $t)
+    {
+        foreach($t as $key)
+        {               
+            $this->tables .= $key.", ";
+        }
+        if(count($t)>0) $this->tables = substr($this->tables, 0, -2);
+        return $this->tables;
+    }
+
     public function loadName($id)
     {
         $db_request = Application::$core->con->pdo->prepare('
@@ -36,12 +60,12 @@ class GroupsModel implements Edit
         return $groupslist;
     }
 
-    public function loadOne(array $tables, int $id):array
+    public function loadOne(array $tables, array $param):array
     {
         $db_request = Application::$core->con->pdo->prepare('
                                     SELECT *
-                                    FROM '.$tables.'
-                                    WHERE id = '.$id.'
+                                    FROM '.$this->createTables($tables).'
+                                    '.$this->createCondition($param).'
         ');
         $db_request->execute();
         
@@ -62,11 +86,22 @@ class GroupsModel implements Edit
                 "description" => $getBody['description']
             )
         );
-        $db_request = Application::$core->con->pdo->prepare('
-                                    SELECT LAST_INSERT_ID()
-        ');
-        $db_request->execute();
     }   
+
+    public function saveGroup($getBody, $id)
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    UPDATE `groups` 
+                                    SET name=:name, description=:description
+                                    WHERE id = '.$id.'
+        ');
+        $db_request->execute(
+            array(
+                "name" => $getBody['name'],
+                "description" => $getBody['description']
+            )
+        );
+    }       
 
     public function deleteOne($table, $id)
     {

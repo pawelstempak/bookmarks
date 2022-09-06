@@ -8,8 +8,8 @@ use app\interfaces\Edit;
 
 class BookmarksModel implements Edit
 {
-    protected string $condition = "";
-    protected string $tables = "";
+    private string $condition = "";
+    private string $tables = "";
 
     public function createCondition(array $p)
     {
@@ -24,7 +24,7 @@ class BookmarksModel implements Edit
         
     }
 
-    public function createTables(array $t)
+    private function createTables(array $t)
     {
         foreach($t as $key)
         {               
@@ -50,6 +50,20 @@ class BookmarksModel implements Edit
 
         return $list;
     }
+
+    public function loadOne(array $tables, array $param):array
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    SELECT *
+                                    FROM '.$this->createTables($tables).'
+                                    '.$this->createCondition($param).'
+        ');
+        $db_request->execute();
+        
+        $bookmark_one = $db_request->fetch();
+
+        return $bookmark_one;        
+    } 
 
     public function saveNewOne($getBody)
     {
@@ -83,6 +97,34 @@ class BookmarksModel implements Edit
             )
         );        
     }   
+
+
+    public function saveBookmark($getBody, $id)
+    {
+        $db_request = Application::$core->con->pdo->prepare('
+                                    UPDATE `bookmarks` 
+                                    SET name=:name, url=:url, description=:description, star=:star
+                                    WHERE id = '.$id.'
+        ');
+        $db_request->execute(
+            array(
+                "name" => $getBody['name'],
+                "url" => $getBody['url'],
+                "description" => $getBody['description'],
+                "star" => $getBody['star']
+            )
+        );
+        $db_request = Application::$core->con->pdo->prepare('
+                                    UPDATE `relations`
+                                    SET id_group=:id_group
+                                    WHERE id_bookmarks='.$id.'
+        ');
+        $db_request->execute(
+            array(
+                "id_group" => $getBody['category']
+            )
+        );        
+    }  
 
     public function deleteOne($table, $id)
     {

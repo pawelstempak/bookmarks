@@ -28,6 +28,9 @@ if($app->isAuth())
     $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->get('/viewgroup', [SiteController::class, 'viewgroup']);
     $app->router->get('/editgroup', [SiteController::class, 'editgroup']);
+    $app->router->post('/editgroup', [SiteController::class, 'editgroup']);
+    $app->router->get('/editbookmark', [SiteController::class, 'editbookmark']);
+    $app->router->post('/editbookmark', [SiteController::class, 'editbookmark']);
 }
 else
 {

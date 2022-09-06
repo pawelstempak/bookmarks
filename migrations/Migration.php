@@ -31,7 +31,7 @@ class Migration
                                     `name` varchar(100) NOT NULL,
                                     `url` varchar(200) NOT NULL,
                                     `description` varchar(500) DEFAULT NULL,
-                                    `star` int(1) DEFAULT NULL
+                                    `star` int(11) NOT NULL DEFAULT 0
                                   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
                                   ALTER TABLE `bookmarks`
                                 ADD PRIMARY KEY (`id`);      

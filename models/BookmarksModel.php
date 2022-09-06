@@ -114,14 +114,18 @@ class BookmarksModel implements Edit
                 "star" => $getBody['star']
             )
         );
+        $id_group = $this->loadOne(['relations'],[
+            'id_bookmarks' => $id
+        ]);
         $db_request = Application::$core->con->pdo->prepare('
-                                    UPDATE `relations`
-                                    SET id_group=:id_group
-                                    WHERE id_bookmarks='.$id.'
+            UPDATE `relations`
+            SET id_group=:id_group
+            WHERE id_bookmarks='.$id.' and id_group='.$id_group['id_group'].'
         ');
+
         $db_request->execute(
             array(
-                "id_group" => $getBody['category']
+                'id_group' => $getBody['category']
             )
         );        
     }  

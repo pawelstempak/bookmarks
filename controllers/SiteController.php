@@ -22,7 +22,7 @@ class SiteController extends Controller
         $this->bookmarks = new BookmarksModel();
         $this->menu = [
             'site_name' => 'Bookmarks',
-            'ver' => 'v0.0.3',
+            'ver' => 'v0.0.4',
             'groups' => $this->groups->loadList([
                 'groups'
             ])

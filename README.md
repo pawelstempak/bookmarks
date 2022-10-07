@@ -1,6 +1,6 @@
-## About MSP4
+## About Bookmarks
 
-MSP4 it's a new version of Mailing Service Panel which has been ended on 3.7 version.
+Bookmarks is ...
 
 ## Installation
 

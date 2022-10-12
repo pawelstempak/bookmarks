@@ -50,7 +50,7 @@ class GroupsModel implements Edit
     {
         $db_request = Application::$core->con->pdo->prepare('
                                     SELECT id, name
-                                    FROM groups
+                                    FROM '.$this->createTables($tables).'
                                     ORDER BY name
         ');
         $db_request->execute();

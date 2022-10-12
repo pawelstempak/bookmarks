@@ -46,23 +46,6 @@ class SiteController extends Controller
         return $this->render('home', $this->menu, $params);
     }
 
-    public function groupsList(Request $request)
-    {   
-        $cat = $request->getBody();
-        $id = $cat['block1'] ?? $id = "";
-        if($id!="")
-        {
-            $this->groups->deleteOne('groups', $id);
-            return $this->redirect('/groupslist');
-        }
-        $groups_list = $this->groups->loadList();
-        $params = [
-            'groupslist' => $groups_list,
-            
-        ];        
-        return $this->render('groupslist', $this->menu, $params);
-    }
-
     public function newGroup(Request $request)
     {   
         if($request->isPost())

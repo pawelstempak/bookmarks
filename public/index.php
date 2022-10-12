@@ -9,6 +9,7 @@ use Dotenv\Dotenv;
 use app\core\Application;
 use app\controllers\SiteController;
 use app\controllers\AuthController;
+use app\controllers\GroupsList;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -22,7 +23,7 @@ if($app->isAuth())
     $app->router->get('/bookmarkslist', [SiteController::class, 'bookmarkslist']);
     $app->router->get('/newbookmark', [SiteController::class, 'newbookmark']);
     $app->router->post('/newbookmark', [SiteController::class, 'newbookmark']);
-    $app->router->get('/groupslist', [SiteController::class, 'groupslist']);
+    $app->router->get('/groupslist', [GroupsList::class, 'groupslist']);
     $app->router->get('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->post('/newgroup', [SiteController::class, 'newgroup']);
     $app->router->get('/viewgroup', [SiteController::class, 'viewgroup']);

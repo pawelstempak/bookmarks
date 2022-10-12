@@ -50,4 +50,12 @@ class AuthController extends Controller
             'model' => $registerModel
         ]);
     }    
+
+
+    public function logout()
+    {
+        $user = new Auth();
+        $user->SignOut();
+        header('Location: /');       
+    }    
 }

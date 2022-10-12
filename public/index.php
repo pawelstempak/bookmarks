@@ -19,7 +19,6 @@ $app = new Application(dirname(__DIR__));
 if($app->isAuth())
 {
     $app->router->get('/', [SiteController::class, 'home']);
-    $app->router->get('/logout', [SiteController::class, 'logout']);
     $app->router->get('/bookmarkslist', [SiteController::class, 'bookmarkslist']);
     $app->router->get('/newbookmark', [SiteController::class, 'newbookmark']);
     $app->router->post('/newbookmark', [SiteController::class, 'newbookmark']);
@@ -31,6 +30,8 @@ if($app->isAuth())
     $app->router->post('/editgroup', [SiteController::class, 'editgroup']);
     $app->router->get('/editbookmark', [SiteController::class, 'editbookmark']);
     $app->router->post('/editbookmark', [SiteController::class, 'editbookmark']);
+
+    $app->router->get('/logout', [AuthController::class, 'logout']);
 }
 else
 {

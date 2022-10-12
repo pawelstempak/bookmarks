@@ -56,7 +56,7 @@ class Migration
         ');
         try {
             $dbRequest->execute();
-            echo "Tables have been created.<br />";
+            echo "Tables have been created.\n\r";
             return true;
         }
         catch(PDOException $e) {
@@ -69,11 +69,11 @@ class Migration
     {
         $dbRequest = $this->con->pdo->prepare('
                                 INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `password`) 
-                                VALUES (1, "Admin", "Admin", "pawelstempak@gmail.com", "amadeusz");
+                                VALUES (1, "Admin", "Admin", "pawelstempak@gmail.com", "123456");
         ');
         try {
             $dbRequest->execute();
-            echo "The data has been inserted.<br />";
+            echo "The data has been inserted.\n\r";
             return true;
         }
         catch(PDOException $e) {

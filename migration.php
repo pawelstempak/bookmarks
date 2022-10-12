@@ -9,7 +9,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-echo "Migration start.<br />";
+echo "Migration start.\n\r";
 $mig = new Migration();
 $mig->CreateTables();
 $mig->InsertTablesData();

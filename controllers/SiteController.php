@@ -46,13 +46,6 @@ class SiteController extends Controller
         return $this->render('home', $this->menu, $params);
     }
 
-    public function logout()
-    {
-        $user = new Auth();
-        $user->SignOut();
-        header('Location: /');       
-    }
-
     public function groupsList(Request $request)
     {   
         $cat = $request->getBody();
